@@ -207,8 +207,8 @@ function defaultFigures (figures) {
 }
 
 (function () {
-    var app = angular.module('contra', []);
-    var scopeInit = function ($scope) {
+    var app = angular.module('contra', ["angucomplete-alt"]);
+    var figuresControlerScopeInit = function ($scope) {
         var fctrl42 = this;
         $scope.moveCaresAboutBalance = moveCaresAboutBalance;
         $scope.moveCaresAboutRotations = moveCaresAboutRotations;
@@ -225,5 +225,16 @@ function defaultFigures (figures) {
         $scope.deleteFigure = function() {(fctrl42.arr.length>0) && fctrl42.arr.pop()};
         $scope.defaultFigures = defaultFigures;
     }
-    app.controller('FiguresController', ['$scope',scopeInit])
+    app.controller('FiguresController', ['$scope',figuresControlerScopeInit]);
+    app.controller('FormationController', ['$scope',function($scope) {
+        var formationCtrl = this;
+        var objectify = function(x){return {"name":x};};
+        var formations = ["improper","Becket","four face four","square dance","indecent","short wavy line"];
+        $scope.formations = formations.map(objectify);
+        $scope.selectedStartType = {};
+        $scope.digForStartTypeValue = function() {
+            return formationCtrl.selectedStartType ? formationCtrl.selectedStartType.originalObject.name :
+                $('#start-type-autocomplete_value')[0].value // undocumented and shady
+        };
+    }]);
 })()
