@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Advanced Figure Search</h1>
+
+  <%= form_tag("search", method: "get") do %>
+    <div id="advanced-figure-search"></div>
+    <button type="button" id="advanced-figure-search-add-figure">+Add</button>
+    <%= submit_tag("Search") %>
+  <% end %>
+
+  <p><%= @echo %></p>
+</div>

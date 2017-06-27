@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :choreographers
   devise_for :users, controllers: { registrations: "users/registrations" }
   resources :users, only: [:show, :index]
+  get 'figures/search'
   resources :figures, only: [:index, :show]
 
   get 'welcome/index'

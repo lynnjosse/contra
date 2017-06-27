@@ -24,4 +24,15 @@ class FiguresController < ApplicationController
     @prev_figure = idx.zero? ? moves.last : moves[idx-1]
     @next_figure = @move == moves.last ? moves.first : moves[idx+1]
   end
+
+  def search
+    @echo = search_params.inspect
+  end
+
+  private
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def search_params
+    params.require(:q)
+  end
 end
