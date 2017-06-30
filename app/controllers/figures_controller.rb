@@ -33,6 +33,6 @@ class FiguresController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def search_params
-    params.require(:q)
+    params.fetch(:q, {})
   end
 end
