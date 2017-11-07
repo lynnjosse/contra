@@ -39,6 +39,15 @@ function stringParamClock     (value) {return value ? "clockwise" : "counter-clo
 function stringParamLeftRight (value) {return value ? "left" : "right";}
 function stringParamHand      (value) {return value ? "right" : "left";}
 function stringParamShoulder  (value) {return value ? "right shoulders" : "left shoulders";}
+function stringParamShoulderMaybe  (value) {
+  if (value === '-') {
+    return '';
+  } else if (value === '*') {
+    return '*';
+  } else {
+    return value + ' shoulder';
+  }
+}
 
 // spin = clockwise | ccw | undefined
 var param_spin                   = {name: "turn",               ui: chooser_spin, string: stringParamClock};
@@ -52,6 +61,7 @@ var param_left_hand_spin         = {name: "hand", value: false, ui: chooser_righ
 var param_xshoulder_spin         = {name: "shoulder",               ui: chooser_right_left_shoulder, string: stringParamShoulder};
 var param_right_shoulder_spin    = {name: "shoulder", value: true,  ui: chooser_right_left_shoulder, string: stringParamShoulder};
 var param_left_shoulder_spin     = {name: "shoulder", value: false, ui: chooser_right_left_shoulder, string: stringParamShoulder};
+var param_xshoulder_spin_maybe   = {name: "shoulder", value: '-',   ui: chooser_right_left_shoulder_maybe, string: stringParamShoulderMaybe};
 
 
 function stringParamSide (value) {
@@ -86,7 +96,8 @@ var param_subject_pair               = {name: "who",                        ui: 
 var param_subject_pair_ladles        = {name: "who", value: "ladles",       ui: chooser_pair};
 var param_subject_pair_gentlespoons  = {name: "who", value: "gentlespoons", ui: chooser_pair};
 var param_subject_pair_ones          = {name: "who", value: "ones",         ui: chooser_pair};
-var param_subject_pairc_or_everyone   = {name: "who", value: "everyone",     ui: chooser_pairc_or_everyone};
+var param_subject_pair_or_everyone   = {name: "who", value: "everyone",     ui: chooser_pair_or_everyone};
+var param_subject_pairc_or_everyone  = {name: "who", value: "everyone",     ui: chooser_pairc_or_everyone};
 var param_subject_pairz              = {name: "who",                        ui: chooser_pairz}; // 1-2 pairs of dancers
 var param_subject_pairz_partners     = {name: "who", value: "partners",     ui: chooser_pairz};
 var param_subject_pairs              = {name: "who",                        ui: chooser_pairs}; // 2 pairs of dancers
@@ -128,8 +139,8 @@ function stringParamFacing (value) {
   }
 }
 
-var param_facing         = {name: "facing", ui: chooser_facing};
-var param_facing_forward = {name: "facing", ui: chooser_facing, value: "forward", string: stringParamFacing};
+var param_marching         = {name: "marching", ui: chooser_marching};
+var param_marching_forward = {name: "marching", ui: chooser_marching, value: "forward", string: stringParamFacing};
 
 function stringParamSlide (value) {
   return value ? 'left' : 'right';

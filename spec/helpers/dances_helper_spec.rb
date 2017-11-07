@@ -144,6 +144,10 @@ RSpec.describe DancesHelper, type: :helper do
    ['neighbors California twirl for 2', 'California twirl', 'neighbors', 2],
    ['ones contra corners', 'contra corners', 'ones', '', 16],
    ['twos contra corners left hands for 10', 'contra corners', 'twos', 'left hands', 10],
+   ['turn alone for 4', 'everyone', '-', '-', 4],
+   ['ladles turn alone over the right shoulder for 4', 'ladles', 'right', '-', 4],
+   ['ladles turn alone to new partner for 4', 'ladles', '-', 'new partner', 4],
+   ['ladles turn alone face out for 2', 'ladles', '-', 'out', 2],
   ].each do |arr|
     render, move, *pvalues = arr
     it "renders #{move} as '#{render}'" do
